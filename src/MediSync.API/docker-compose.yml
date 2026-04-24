@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  api:
+    build: .
+    ports:
+      - "5094:5094"
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=db;Port=5432;Database=medisync_db;Username=postgres;Password=postgres
+      - ConnectionStrings__Redis=redis:6379
+      - Jwt__Secret=YOUR_SECRET_KEY_MIN_32_CHARS_HERE
+      - Jwt__Issuer=MediSync
+      - Jwt__Audience=MediSyncUsers
+    depends_on:
+      - db
+      - redis
+
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: medisync_db
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    image: redis:alpine
+
+volumes:
+  pgdata:

@@ -1,0 +1,15 @@
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.Application\obj\Debug\net10.0\MediSync.Application.csproj.AssemblyReference.cache
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.Application\obj\Debug\net10.0\MediSync.Application.GeneratedMSBuildEditorConfig.editorconfig
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.Application\obj\Debug\net10.0\MediSync.Application.AssemblyInfoInputs.cache
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.Application\obj\Debug\net10.0\MediSync.Application.AssemblyInfo.cs
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.Application\obj\Debug\net10.0\MediSync.Application.csproj.CoreCompileInputs.cache
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.Application\bin\Debug\net10.0\MediSync.Application.deps.json
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.Application\bin\Debug\net10.0\MediSync.Application.dll
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.Application\bin\Debug\net10.0\MediSync.Application.pdb
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.Application\bin\Debug\net10.0\MediSync.Domain.dll
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.Application\bin\Debug\net10.0\MediSync.Domain.pdb
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.Application\obj\Debug\net10.0\MediSync.30E9F1F5.Up2Date
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.Application\obj\Debug\net10.0\MediSync.Application.dll
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.Application\obj\Debug\net10.0\refint\MediSync.Application.dll
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.Application\obj\Debug\net10.0\MediSync.Application.pdb
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.Application\obj\Debug\net10.0\ref\MediSync.Application.dll

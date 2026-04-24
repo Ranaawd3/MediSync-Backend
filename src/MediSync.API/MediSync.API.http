@@ -1,0 +1,6 @@
+@MediSync.API_HostAddress = http://localhost:5094
+
+GET {{MediSync.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
