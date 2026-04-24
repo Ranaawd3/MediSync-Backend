@@ -19,8 +19,17 @@ builder.Services.AddControllers()
     });
 
 // ── 2. PostgreSQL ──────────────────────────────────
+var connectionString =
+    config.GetConnectionString("DefaultConnection")
+    ?? Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection");
+
+    if (string.IsNullOrEmpty(connectionString))
+{
+    throw new Exception("Database connection string is missing!");
+}
+
 builder.Services.AddDbContext<AppDbContext>(opt =>
-    opt.UseNpgsql(config.GetConnectionString("DefaultConnection")));
+    opt.UseNpgsql(connectionString));
 
 // ── 3. Redis ───────────────────────────────────────
 builder.Services.AddStackExchangeRedisCache(opt =>
