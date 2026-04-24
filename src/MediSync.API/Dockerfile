@@ -16,7 +16,5 @@ RUN dotnet publish src/MediSync.API/MediSync.API.csproj \
 
 FROM base AS final
 WORKDIR /app
-
 COPY --from=build /app/publish .
-
 ENTRYPOINT ["dotnet", "MediSync.API.dll"]
