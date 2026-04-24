@@ -8,9 +8,9 @@ WORKDIR /src
 
 COPY . .
 
-RUN dotnet restore src/MediSync.API/MediSync.API.csproj
+RUN dotnet restore MediSync.Backend/src/MediSync.API/MediSync.API.csproj
 
-RUN dotnet publish src/MediSync.API/MediSync.API.csproj \
+RUN dotnet publish MediSync.Backend/src/MediSync.API/MediSync.API.csproj \
     -c Release \
     -o /app/publish
 
