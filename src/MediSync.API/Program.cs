@@ -1,10 +1,15 @@
 using System.Text;
 using System.Text.Json;
+using Hangfire;
+using Hangfire.PostgreSql;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using MediSync.Infrastructure.Persistence;
+using MediSync.Infrastructure.Services;
+using MediSync.Infrastructure.BackgroundJobs;
+using MediSync.Application.Services;
 using MediSync.API.Middleware;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -116,8 +121,20 @@ builder.Services.AddScoped<MediSync.Application.Services.ITokenService,
                             MediSync.Infrastructure.Services.TokenService>();
                             
 builder.Services.AddScoped<MediSync.Application.Persistence.IApplicationDbContext>(
-    provider => provider.GetRequiredService<MediSync.Infrastructure.Persistence.AppDbContext>());                          
+    provider => provider.GetRequiredService<MediSync.Infrastructure.Persistence.AppDbContext>()); 
 
+builder.Services.AddScoped<MediSync.Application.Services.IOcrService,
+    MediSync.Infrastructure.Services.AzureOcrService>();     
+
+builder.Services.AddHangfire(x => x.UsePostgreSqlStorage(
+    config.GetConnectionString("DefaultConnection")!));
+
+builder.Services.AddHangfireServer();
+
+builder.Services.AddScoped<MediSync.Application.Services.INotificationService,
+                            MediSync.Infrastructure.Services.FirebaseNotificationService>();
+builder.Services.AddScoped<MediSync.Infrastructure.BackgroundJobs.ReminderSchedulerJob>();
+                    
 // ── Build ──────────────────────────────────────────
 var app = builder.Build();
 app.UseMiddleware<ExceptionHandlingMiddleware>();
@@ -131,9 +148,19 @@ if (app.Environment.IsDevelopment()) {
     });
 }
 
+app.UseHangfireDashboard("/hangfire");
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+
+// ── Hangfire Recurring Jobs ────────────────────────
+using (var scope = app.Services.CreateScope())
+{
+    RecurringJob.AddOrUpdate<ReminderSchedulerJob>(
+        "generate-reminders",
+        job => job.GenerateTodayRemindersAsync(),
+        Cron.Daily(0, 0));  // كل يوم 12 AM
+}
 
 // Health Endpoint
 app.MapGet("/health", () => Results.Ok(new { status = "ok", time = DateTime.UtcNow }));
@@ -146,7 +173,7 @@ using (var scope = app.Services.CreateScope())
 } 
 
 
-var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5094";
 app.Urls.Add($"http://0.0.0.0:{port}");
 
 app.Run();

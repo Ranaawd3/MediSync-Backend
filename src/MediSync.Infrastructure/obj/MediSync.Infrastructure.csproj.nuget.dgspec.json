@@ -763,6 +763,10 @@
               "target": "Package",
               "version": "[4.1.0, )"
             },
+            "FirebaseAdmin": {
+              "target": "Package",
+              "version": "[3.5.0, )"
+            },
             "Hangfire.PostgreSql": {
               "target": "Package",
               "version": "[1.21.1, )"

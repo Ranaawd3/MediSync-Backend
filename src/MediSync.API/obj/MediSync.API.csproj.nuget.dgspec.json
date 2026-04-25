@@ -70,6 +70,10 @@
               "target": "Package",
               "version": "[1.8.23, )"
             },
+            "Hangfire.PostgreSql": {
+              "target": "Package",
+              "version": "[1.21.1, )"
+            },
             "MediatR": {
               "target": "Package",
               "version": "[14.1.0, )"
@@ -1296,6 +1300,10 @@
             "BCrypt.Net-Next": {
               "target": "Package",
               "version": "[4.1.0, )"
+            },
+            "FirebaseAdmin": {
+              "target": "Package",
+              "version": "[3.5.0, )"
             },
             "Hangfire.PostgreSql": {
               "target": "Package",

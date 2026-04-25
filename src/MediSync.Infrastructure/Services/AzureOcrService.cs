@@ -1,17 +1,19 @@
-using System.Text.Json;
+using MediSync.Application.DTOs.Medications;
+using MediSync.Application.Services;
 using Microsoft.Extensions.Configuration;
+using System.Text.Json;
 
 namespace MediSync.Infrastructure.Services;
 
-// Stub implementation — هيتكمل في أسبوع 5 مع Azure Vision
 public class AzureOcrService(
     IHttpClientFactory httpClientFactory,
     IConfiguration     config)
+    : IOcrService
 {
     private readonly string _fastApiUrl =
         config["ExternalServices:FastApiUrl"] ?? "http://localhost:8000";
 
-    public async Task<object> ScanAsync(
+    public async Task<OcrResultDto> ScanAsync(
         byte[]            imageBytes,
         string            fileName,
         string            contentType,
@@ -28,11 +30,12 @@ public class AzureOcrService(
         {
             var response = await client.PostAsync($"{_fastApiUrl}/ocr", form, ct);
             var json     = await response.Content.ReadAsStringAsync(ct);
-            return JsonSerializer.Deserialize<object>(json)!;
+            return JsonSerializer.Deserialize<OcrResultDto>(json,
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true })!;
         }
         catch
         {
-            return new { status = "failed", confidence = 0 };
+            return new OcrResultDto(Guid.NewGuid(), 0, "failed", true, null, [], 0);
         }
     }
 }

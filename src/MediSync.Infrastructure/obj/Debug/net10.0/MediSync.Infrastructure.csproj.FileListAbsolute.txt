@@ -17,3 +17,4 @@ E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.
 E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.Infrastructure\obj\Debug\net10.0\MediSync.Infrastructure.pdb
 E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.Infrastructure\obj\Debug\net10.0\MediSync.Infrastructure.genruntimeconfig.cache
 E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.Infrastructure\obj\Debug\net10.0\ref\MediSync.Infrastructure.dll
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.Infrastructure\obj\Debug\net10.0\MediSync.Infrastructure.sourcelink.json

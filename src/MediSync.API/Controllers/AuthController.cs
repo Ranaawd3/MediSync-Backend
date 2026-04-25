@@ -1,4 +1,5 @@
 using MediatR;
+using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MediSync.Application.DTOs.Auth;
@@ -73,12 +74,27 @@ public class AuthController(IMediator mediator, AppDbContext db, ITokenService t
         return Ok(ApiResponse<object>.Ok(new {}, "لو الإيميل موجود، هيوصلك رابط"));
     }
 
-/// <summary>إعادة تعيين كلمة المرور</summary>
-[HttpPut("reset-password")]
-public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordRequest req)
-{
-    await mediator.Send(new ResetPasswordCommand(req.Token, req.NewPassword));
-    return Ok(ApiResponse<object>.Ok(new {}, "تم تغيير كلمة المرور"));
+    /// <summary>إعادة تعيين كلمة المرور</summary>
+    [HttpPut("reset-password")]
+    public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordRequest req)
+    {
+        await mediator.Send(new ResetPasswordCommand(req.Token, req.NewPassword));
+        return Ok(ApiResponse<object>.Ok(new {}, "تم تغيير كلمة المرور"));
+    }
+
+    /// <summary>Flutter بتبعت الـ FCM Token عشان تستلم Push Notifications</summary>
+    [HttpPost("api/v1/auth/push-token")]
+    [Authorize]
+    public async Task<IActionResult> UpdatePushToken([FromBody] PushTokenRequest req)
+    {
+        var userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
+        var user   = await db.Users.FindAsync(userId);
+    if (user != null)
+    {
+        user.PushToken = req.PushToken;
+        await db.SaveChangesAsync();
+    }
+    return Ok(ApiResponse<object>.Ok(new {}, "تم حفظ الـ Push Token"));
 }
 
 }
@@ -86,3 +102,4 @@ public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordRequest r
 public record RefreshRequest(string RefreshToken);
 public record ForgotPasswordRequest(string Email);
 public record ResetPasswordRequest(string Token, string NewPassword);
+public record PushTokenRequest(string PushToken);

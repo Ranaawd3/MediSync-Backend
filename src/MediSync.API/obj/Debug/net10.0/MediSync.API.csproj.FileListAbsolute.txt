@@ -176,3 +176,13 @@ E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.
 E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.API\obj\Debug\net10.0\MediSync.API.pdb
 E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.API\obj\Debug\net10.0\MediSync.API.genruntimeconfig.cache
 E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.API\obj\Debug\net10.0\ref\MediSync.API.dll
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.API\obj\Debug\net10.0\MediSync.API.sourcelink.json
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.API\bin\Debug\net10.0\FirebaseAdmin.dll
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.API\bin\Debug\net10.0\Google.Api.Gax.dll
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.API\bin\Debug\net10.0\Google.Api.Gax.Rest.dll
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.API\bin\Debug\net10.0\Google.Apis.dll
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.API\bin\Debug\net10.0\Google.Apis.Auth.dll
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.API\bin\Debug\net10.0\Google.Apis.Core.dll
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.API\bin\Debug\net10.0\Microsoft.Bcl.AsyncInterfaces.dll
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.API\bin\Debug\net10.0\System.Management.dll
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.API\bin\Debug\net10.0\runtimes\win\lib\net7.0\System.Management.dll

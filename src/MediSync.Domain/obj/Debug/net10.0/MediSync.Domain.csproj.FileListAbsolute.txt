@@ -9,3 +9,4 @@ E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.
 E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.Domain\obj\Debug\net10.0\refint\MediSync.Domain.dll
 E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.Domain\obj\Debug\net10.0\MediSync.Domain.pdb
 E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.Domain\obj\Debug\net10.0\ref\MediSync.Domain.dll
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\src\MediSync.Domain\obj\Debug\net10.0\MediSync.Domain.sourcelink.json
