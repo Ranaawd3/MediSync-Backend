@@ -149,10 +149,14 @@ builder.Services.AddScoped<IFamilyHubContext, FamilyHubContext>();
 
 // CaregiverAlertJob
 builder.Services.AddScoped<CaregiverAlertJob>();
+
+builder.Services.AddScoped<IChatbotService, ChatbotService>();
                     
 // ── Build ──────────────────────────────────────────
 var app = builder.Build();
+app.UseMiddleware<RateLimitingMiddleware>();
 app.UseMiddleware<ExceptionHandlingMiddleware>();
+app.UseMiddleware<AuditLogMiddleware>();
 app.UseCors("AllowFrontend");
 
 if (app.Environment.IsDevelopment()) {

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MediSync.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1cda0056bb716780ae9203e5228d403ab551565d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+933e9750227a6f079d0d3c8b70152b34a2b23684")]
 [assembly: System.Reflection.AssemblyProductAttribute("MediSync.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MediSync.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

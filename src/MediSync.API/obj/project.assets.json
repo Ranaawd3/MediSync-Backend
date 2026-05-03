@@ -1617,6 +1617,8 @@
           "Microsoft.EntityFrameworkCore.Relational": "10.0.5",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "10.0.1",
           "QuestPDF": "2024.10.0",
+          "Serilog.AspNetCore": "8.0.2",
+          "Serilog.Sinks.Console": "6.0.0",
           "StackExchange.Redis": "2.12.8",
           "System.IdentityModel.Tokens.Jwt": "8.17.0"
         },
