@@ -2,9 +2,11 @@ using System.Text;
 using System.Text.Json;
 using Hangfire;
 using Hangfire.PostgreSql;
+using MediSync.API.Hubs;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using QuestPDF.Infrastructure;
 using Microsoft.IdentityModel.Tokens;
 using MediSync.Infrastructure.Persistence;
 using MediSync.Infrastructure.Services;
@@ -12,6 +14,7 @@ using MediSync.Infrastructure.BackgroundJobs;
 using MediSync.Application.Services;
 using MediSync.API.Middleware;
 
+QuestPDF.Settings.License = LicenseType.Community;
 var builder = WebApplication.CreateBuilder(args);
 var config  = builder.Configuration;
 
@@ -134,6 +137,18 @@ builder.Services.AddHangfireServer();
 builder.Services.AddScoped<MediSync.Application.Services.INotificationService,
                             MediSync.Infrastructure.Services.FirebaseNotificationService>();
 builder.Services.AddScoped<MediSync.Infrastructure.BackgroundJobs.ReminderSchedulerJob>();
+
+// SignalR
+builder.Services.AddSignalR();
+
+// Email Service
+builder.Services.AddScoped<IEmailService, EmailService>();
+
+// FamilyHub Context — للـ Real-time Notifications
+builder.Services.AddScoped<IFamilyHubContext, FamilyHubContext>();
+
+// CaregiverAlertJob
+builder.Services.AddScoped<CaregiverAlertJob>();
                     
 // ── Build ──────────────────────────────────────────
 var app = builder.Build();
@@ -152,6 +167,15 @@ app.UseHangfireDashboard("/hangfire");
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
+
+//-------SignalR Hub Route----------
+app.MapHub<FamilyHub>("/hubs/family");
+
+//---------CaregiverAlertJob — كل 30 دقيقة---------
+RecurringJob.AddOrUpdate<CaregiverAlertJob>(
+    "caregiver-alerts",
+    job => job.CheckAndAlertCaregiversAsync(),
+    "*/30 * * * *");  // كل 30 دقيقة
 
 // ── Hangfire Recurring Jobs ────────────────────────
 using (var scope = app.Services.CreateScope())

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MediSync.Application.Features.Medications.Handlers;
 
-public class AddMedicationHandler(IApplicationDbContext db, IMediator mediator)
+public class AddMedicationHandler(IApplicationDbContext db)
     : IRequestHandler<AddMedicationCommand, AddMedicationResult>
 {
     public async Task<AddMedicationResult> Handle(

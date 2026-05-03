@@ -94,3 +94,4 @@ E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\tests\MediSyn
 E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\tests\MediSync.UnitTests\obj\Debug\net10.0\MediSync.UnitTests.pdb
 E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\tests\MediSync.UnitTests\obj\Debug\net10.0\MediSync.UnitTests.genruntimeconfig.cache
 E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\tests\MediSync.UnitTests\obj\Debug\net10.0\ref\MediSync.UnitTests.dll
+E:\رنون\الماده الشاده\GP\MediSync\MediSync.Backend\tests\MediSync.UnitTests\obj\Debug\net10.0\MediSync.UnitTests.sourcelink.json

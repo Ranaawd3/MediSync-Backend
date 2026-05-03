@@ -12,6 +12,7 @@ public class Reminder
     public int       SnoozeCount       { get; set; } = 0;
     public bool      CaregiverNotified { get; set; } = false;
     public DateTime  CreatedAt         { get; set; } = DateTime.UtcNow;
+    public bool CaregiverAlerted { get; set; } = false;
 
     // Navigation
     public Medication Medication { get; set; } = null!;

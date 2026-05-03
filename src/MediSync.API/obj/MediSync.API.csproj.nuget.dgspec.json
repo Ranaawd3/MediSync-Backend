@@ -1309,9 +1309,17 @@
               "target": "Package",
               "version": "[1.21.1, )"
             },
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.16.0, )"
+            },
             "Microsoft.AspNetCore.Http.Abstractions": {
               "target": "Package",
               "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.SignalR.Core": {
+              "target": "Package",
+              "version": "[1.2.9, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -1338,6 +1346,10 @@
             "Npgsql.EntityFrameworkCore.PostgreSQL": {
               "target": "Package",
               "version": "[10.0.1, )"
+            },
+            "QuestPDF": {
+              "target": "Package",
+              "version": "[2024.10.0, )"
             },
             "StackExchange.Redis": {
               "target": "Package",

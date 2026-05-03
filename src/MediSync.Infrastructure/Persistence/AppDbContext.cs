@@ -51,5 +51,21 @@ public class AppDbContext(DbContextOptions<AppDbContext> options)
              .WithMany(u => u.Reminders)
              .HasForeignKey(r => r.UserId);
         });
+
+        // OnModelCreating
+        b.Entity<FamilyLink>(entity =>
+        {
+            entity.HasKey(f => f.Id);
+            entity.HasIndex(f => f.InviteToken).IsUnique();
+            entity.HasOne(f => f.Patient)
+                .WithMany()
+                .HasForeignKey(f => f.PatientId)
+                .OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne(f => f.Caregiver)
+                .WithMany()
+                .HasForeignKey(f => f.CaregiverId)
+                .IsRequired(false)
+                .OnDelete(DeleteBehavior.Restrict);
+        });
     }
 }

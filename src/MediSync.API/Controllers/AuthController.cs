@@ -83,19 +83,19 @@ public class AuthController(IMediator mediator, AppDbContext db, ITokenService t
     }
 
     /// <summary>Flutter بتبعت الـ FCM Token عشان تستلم Push Notifications</summary>
-    [HttpPost("api/v1/auth/push-token")]
+    [HttpPost("push-token")]
     [Authorize]
     public async Task<IActionResult> UpdatePushToken([FromBody] PushTokenRequest req)
     {
         var userId = Guid.Parse(User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
         var user   = await db.Users.FindAsync(userId);
-    if (user != null)
-    {
-        user.PushToken = req.PushToken;
-        await db.SaveChangesAsync();
-    }
-    return Ok(ApiResponse<object>.Ok(new {}, "تم حفظ الـ Push Token"));
-}
+        if (user != null)
+        {
+            user.PushToken = req.PushToken;
+            await db.SaveChangesAsync();
+        }
+      return Ok(ApiResponse<object>.Ok(new {}, "تم حفظ الـ Push Token"));
+   }
 
 }
 

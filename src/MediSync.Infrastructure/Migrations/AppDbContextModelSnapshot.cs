@@ -145,13 +145,27 @@ namespace MediSync.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<Guid>("CaregiverId")
+                    b.Property<DateTime?>("AcceptedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("CanEditMeds")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("CaregiverEmail")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<Guid?>("CaregiverId")
                         .HasColumnType("uuid");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<DateTime>("InviteExpiry")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("InviteToken")
+                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<Guid>("PatientId")
@@ -164,15 +178,12 @@ namespace MediSync.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<bool>("ViewAdherence")
-                        .HasColumnType("boolean");
-
-                    b.Property<bool>("ViewMedications")
-                        .HasColumnType("boolean");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CaregiverId");
+
+                    b.HasIndex("InviteToken")
+                        .IsUnique();
 
                     b.HasIndex("PatientId");
 
@@ -366,6 +377,9 @@ namespace MediSync.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
+                    b.Property<bool>("CaregiverAlerted")
+                        .HasColumnType("boolean");
+
                     b.Property<bool>("CaregiverNotified")
                         .HasColumnType("boolean");
 
@@ -506,13 +520,12 @@ namespace MediSync.Infrastructure.Migrations
                     b.HasOne("MediSync.Domain.Entities.User", "Caregiver")
                         .WithMany()
                         .HasForeignKey("CaregiverId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("MediSync.Domain.Entities.User", "Patient")
                         .WithMany()
                         .HasForeignKey("PatientId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Caregiver");

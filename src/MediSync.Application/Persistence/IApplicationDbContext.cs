@@ -16,6 +16,6 @@ public interface IApplicationDbContext
     DbSet<NotificationLog>  NotificationLogs { get; }
     DbSet<AuditLog>         AuditLogs        { get; }
     DbSet<SymptomReport>    SymptomReports   { get; }
-
+        
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }

@@ -1,11 +1,12 @@
 using MediatR;
 using MediSync.Application.Features.Medications.Commands;
 using MediSync.Application.Persistence;
+using MediSync.Application.Services;
 using Microsoft.EntityFrameworkCore;
 
 namespace MediSync.Application.Features.Medications.Handlers;
 
-public class TakeDoseHandler(IApplicationDbContext db)
+public class TakeDoseHandler(IApplicationDbContext db, IFamilyHubContext familyHub)
     : IRequestHandler<TakeDoseCommand>
 {
     public async Task Handle(TakeDoseCommand req, CancellationToken ct)
@@ -30,5 +31,12 @@ public class TakeDoseHandler(IApplicationDbContext db)
             medication.StockCount--;
 
         await db.SaveChangesAsync(ct);
+
+        await familyHub.NotifyDoseStatusChangedAsync(
+            req.UserId,
+            req.MedicationId,
+            "taken",
+            medication?.BrandName ?? "Medication"
+        );
     }
 }
